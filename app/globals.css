@@ -1,26 +1,122 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --blue-light: #e9f1fa;
+  --blue-bright: #00abe4;
+  --white: #ffffff;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050b14; /* Fundo super escuro que combina com a logo */
+}
+
+/* GRADIENTE AZUL JUMPIEMOON */
+.bg-blue-gradient {
+  background: linear-gradient(135deg, #005f8f 0%, #0096c7 50%, #00abe4 100%);
+}
+
+.bg-bahia-gradient {
+  background: linear-gradient(135deg, #004e98 0%, #8ecae6 50%, #ae2012 100%);
+}
+
+.text-blue-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--blue-bright) 0%,
+    var(--blue-light) 100%
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FUNDO ESPACIAL AZULADO */
+.bg-space {
+  background:
+    radial-gradient(
+      circle at 10% 20%,
+      rgba(0, 171, 228, 0.15) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(233, 241, 250, 0.05) 0%,
+      transparent 40%
+    );
+}
+
+/* GLASSMORPHISM - CARD PRINCIPAL */
+.glass-card {
+  background: rgba(233, 241, 250, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(233, 241, 250, 0.1);
+  border-radius: 2.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+/* GLASSMORPHISM - ESFERA/CONTAINER DA LOGO */
+.glass-sphere {
+  border-radius: 3rem;
+  background: rgba(0, 171, 228, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ANIMAÇÕES */
+.fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes astronautFloat {
+  0% {
+    transform: translateY(-50%) translateX(0px) rotate(-4deg);
+  }
+
+  50% {
+    transform: translateY(calc(-50% - 20px)) translateX(-10px) rotate(4deg);
+  }
+
+  100% {
+    transform: translateY(-50%) translateX(0px) rotate(-4deg);
+  }
+}
+
+.animate-astronaut {
+  animation: astronautFloat 8s ease-in-out infinite;
+}
+
+/* SCROLLBAR CUSTOMIZADA (AZUL) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050b14;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blue-bright);
 }
